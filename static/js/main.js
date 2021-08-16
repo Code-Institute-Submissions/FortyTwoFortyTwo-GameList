@@ -129,3 +129,34 @@ $(document).on("click", ".game-delete", function ()
 		});
 	}
 });
+
+/*
+Called when new category button is on focus to be typed in home page
+*/
+$(document).on("focus", "#categories-new", function ()
+{
+	//Clear text so it can easily be typed
+	$(this).val("");
+});
+
+/*
+Called when new category button is no longer focused to be typed in home page
+*/
+$(document).on("blur", "#categories-new", function ()
+{
+	let value = $("#categories-new")[0].value;
+
+	//Set text back to what it was
+	$("#categories-new").val("Add New Category");
+
+	//If nothing entered, dont create new category
+	if (value == "")
+		return;
+	
+	//Insert new category in database
+	$.post("/category_insert", {name: value}, function(data, status)
+	{
+		//Add html underneath new category input for newly created category
+		$('<p data-id="' + data + '" class="border-basic color-blue">' + value + '</p>').insertAfter("#categories-new");
+	});
+});

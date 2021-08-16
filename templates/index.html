@@ -34,6 +34,8 @@
 			
 			<!-- List of categories -->
 			<div class="col-6 offset-0 offset-md-1 col-md-3">
+				<input class="text-basic border-basic color-green" type="text" id="categories-new" name="categories" value="Add New Category">
+				
 				{% for category in categories | reverse %}
 					<p class="border-basic color-blue">{{ category.name }}</p>
 				{% endfor %}

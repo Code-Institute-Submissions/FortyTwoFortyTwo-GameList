@@ -61,6 +61,11 @@ def game_delete():
     mongo.db.games.delete_one({"_id": ObjectId(request.form['id'])})
     return request.form['id']
 
+@app.route("/category_insert", methods=['POST'])
+def category_insert():
+    x = mongo.db.categories.insert_one({"name": request.form['name']})
+    return str(x.inserted_id)
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),

@@ -11,7 +11,7 @@
 	border-width: 0.2rem;
 }
 
-p {
+p, .text-basic {
 	padding-left: 30px;
 	padding-right: 30px;
 	margin-top: 2px;
@@ -61,6 +61,12 @@ input[readonly], textarea[readonly] {
 }
 
 #input-desp {
+	width: 100%;
+}
+
+/* ---------------------------------- Categories */
+
+#categories-new {
 	width: 100%;
 }
 
