@@ -39,6 +39,11 @@ def game_update():
     mongo.db.games.update_one({'_id': ObjectId(request.form['id'])}, {'$set': game_data})
     return request.form['id']
 
+@app.route("/game_delete", methods=['POST'])
+def game_delete():
+    mongo.db.games.delete_one({"_id": ObjectId(request.form['id'])})
+    return request.form['id']
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),
