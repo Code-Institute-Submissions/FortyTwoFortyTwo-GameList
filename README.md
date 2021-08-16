@@ -1,9 +1,50 @@
 # GameList
 
+## About
+I developed a website for Code Institute's Backend Development Milestone Project. The website's goal is to allow user to insert, edit and delete list of games.
+The website is designed to be simple and easy to use on any platform or scale.
+
 ## Index – Table of Contents
+* [User Experience (UX)](#user-experience) 
+* [Features](#features)
 * [Designs](#designs)
 * [Technologies Used](#technologies-used)
 * [Testing](#testing)
+* [Known Bugs](#known-bugs)
+* [Deployment](#deployment)
+
+## User Experience
+
+#### Ideal user
+
+##### The ideal user for this website is:
+* Anyone searching for a game
+* Anyone wanting to share a game
+
+##### Visitors to this website are searching for:
+* A game to play
+* A game to share
+
+##### This project is the best way to help them achieve these things because:
+* Easy to understand
+* Very clear
+* Quick filter for different types of games by categories
+
+##### User stories
+1. As a new user, I want to find a game to play
+2. As a new user, I want to share a game for others
+3. As a new user, I want to see a specific category of game
+
+## Features
+
+##### List of games
+Home page shows list of game titles that can be clicked for more information
+
+##### Infromation of games
+Info page shows more infomation about a given game, and can be edited
+
+##### Categories
+Categories that can be filtered to only show games in a selected category
 
 ## Designs
 ![Home page](README-files/home.png)
@@ -48,3 +89,45 @@
 | Delete category | Clicking category X button | Alert page to confirm delete shows | PASS |
 | Cancel category game | Clicking cancel in delete confirmation | Alert page gone and no changes made | PASS |
 | Confirm category game | Clicking ok in delete confirmation | Category deleted | PASS |
+
+## Known Bugs
+Cost and rating can be inserted as non-numbers
+
+## Deployment
+
+#### Adding and Committing files
+To add files to the repository take the following steps
+
+In the command line type -
+        git add .  
+        git commit -m "This is being committed"
+        git push
+
+To add all new files or modified file use " ."  - To add a single file use the pathway to the file eg .index.html  or assets/css/style.css
+When committing make sure your comments are clear about what changes have been made. 
+Pushing will send your work to the repository
+
+#### Forking
+By forking the GitHub Repository, you can make a copy of the original repository in your own GitHub account.  This means we can view or make changes without making the changes affecting the original.
+
+* Log into GitHub and locate the GitHub Repository.
+* At the top of the Repository there is a "Fork" button about the "Settings" button on the menu.
+* You should now have a new copy of the original repository in your own GitHub account.
+
+### Cloning
+* Log into your GitHub then find the gitpod repository
+* Under the repository name there is a button that says "Clone or download". Click on this button.
+* If cloning with HTTPS "Clone with HTTPS", copy this link.
+* Open Gitbash
+* Change the current working directory to the location where you want the cloned directory to be.
+* Type git clone, and then paste the URL you copied earlier.
+
+        $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+        Press - Enter- Your local clone will be created.
+        $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+                > Cloning into `CI-Clone`...
+                > remote: Counting objects: 10, done.
+                > remote: Compressing objects: 100% (8/8), done.
+                > remove: Total 10 (delta 1), reused 10 (delta 1)
+                > Unpacking objects: 100% (10/10), done.
+[Click Here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository) for more info on cloning. 
