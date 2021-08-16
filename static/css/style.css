@@ -19,6 +19,10 @@ p {
 	font-size: 30px;
 }
 
+.game-main {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 
 /* ---------------------------------- Text */
 
@@ -26,12 +30,46 @@ p {
 	text-align: center;
 }
 
-p {
+a {
+	color: #000000;
+	width: 100%;
+}
+
+p, a, input, textarea {
 	font-family: "Exo", sans-serif;
 	font-weight: 700;
 }
 
+input[readonly], textarea[readonly] {
+	background: none;
+	border: none;
+}
+
+/* ---------------------------------- Inputs */
+
+#input-title {
+	width: 100%;
+	outline: none;
+}
+
+#input-cost {
+	max-width: 100px;
+}
+
+#input-rating {
+	max-width: 65px;
+}
+
+#input-desp {
+	width: 100%;
+}
+
 /* ---------------------------------- Colors */
+
+.color-blue {
+	border-color: #0080ff;
+	background-color: #94c7de;
+}
 
 .color-purple {
 	border-color: #800080;

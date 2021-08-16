@@ -9,23 +9,18 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
 	<title>GameList</title>
 </head>
+
 <body>
-	<header>
-		<!-- Title -->
-		<h1 class="text-align-center">
-			GameList
-		</h1>
-	</header>
-	
-	<div class="col">
-		<div class="row no-gutters">
+	<div class="row no-gutters">
+		
+		<!-- Infos -->
+		<div class="col-12 offset-0 offset-md-3 col-md-6 no-gutters game-main border-basic color-blue">
 			
-			<!-- List of games -->
-			<div class="col-6 offset-0 offset-md-2 col-md-4">
-				{% for game in games | reverse %}
-					<a href="/info/{{ game._id }}"><p class="border-basic color-purple">{{ game.title }}</p></a>
-				{% endfor %}
-			</div>
+			<p class="text-align-center"><input class="text-align-center" type="text" id="input-title" name="title" value="{{ game.title }}" readonly></p>
+			<p>Cost: £<input type="text" id="input-cost" name="cost" value="{{ game.cost }}" readonly></p>
+			<p>Rating: £<input type="text" id="input-rating" name="rating" value="{{ game.rating }}" readonly></p>
+			
+			<p><textarea id="input-desp" rows="4" readonly>{{ game.desp }}</textarea></p>
 		</div>
 	</div>
 </body>
