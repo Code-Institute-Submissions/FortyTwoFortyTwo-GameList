@@ -66,6 +66,11 @@ input[readonly], textarea[readonly] {
 
 /* ---------------------------------- Colors */
 
+.color-orange {
+	border-color: #b8860b;
+	background-color: #ffa500;
+}
+
 .color-blue {
 	border-color: #0080ff;
 	background-color: #94c7de;
