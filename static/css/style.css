@@ -35,12 +35,12 @@ a {
 	width: 100%;
 }
 
-p, a, input, textarea {
+p, a, input, select, textarea {
 	font-family: "Exo", sans-serif;
 	font-weight: 700;
 }
 
-input[readonly], textarea[readonly] {
+input[readonly], select[readonly], textarea[readonly] {
 	background: none;
 	border: none;
 }
@@ -58,6 +58,10 @@ input[readonly], textarea[readonly] {
 
 #input-rating {
 	max-width: 65px;
+}
+
+#input-category {
+	padding: 0;
 }
 
 #input-desp {

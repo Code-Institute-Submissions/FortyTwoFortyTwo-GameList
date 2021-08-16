@@ -7,6 +7,7 @@ $(document).on("click", ".game-create", function ()
 	let datatitle = $("#input-title")[0].value;
 	let datacost = $("#input-cost")[0].value;
 	let datarating = $("#input-rating")[0].value;
+	let datacategory = $("#input-category")[0].value;
 	let datadesp = $("#input-desp")[0].value;
 
 	//Insert datas to database
@@ -27,28 +28,32 @@ $(document).on("click", ".game-save", function ()
 	let datatitle = $("#input-title")[0].value;
 	let datacost = $("#input-cost")[0].value;
 	let datarating = $("#input-rating")[0].value;
+	let datacategory = $("#input-category")[0].value;
 	let datadesp = $("#input-desp")[0].value;
 	
 	//Update datas to database
-	$.post("/game_update", {id: dataid, title: datatitle, cost: datacost, rating: datarating, desp: datadesp}, function(data, status)
+	$.post("/game_update", {id: dataid, title: datatitle, cost: datacost, rating: datarating, category: datacategory, desp: datadesp}, function(data, status)
 	{
 		//Update data attr for new value
 		$(".game-main").parent().attr('data-title', datatitle);
 		$(".game-main").parent().attr('data-cost', datacost);
 		$(".game-main").parent().attr('data-rating', datarating);
+		$(".game-main").parent().attr('data-category', datacategory);
 		$(".game-main").parent().attr('data-desp', datadesp);
-		
+
 		//Set inputs read only
-		$("input, textarea").attr("readonly", "");
-		$("input, textarea").removeClass("color-orange");
-		
+		$("input, select, textarea").attr("readonly", "");
+		$("input, select, textarea").removeClass("color-orange");
+		$("option").attr("disabled", "");
+		$("option").attr("hidden", "");
+
 		//Change save button to edit
 		$(".game-save").text("Edit");
 		$(".game-save").addClass("color-orange");
 		$(".game-save").removeClass("color-green");
 		$(".game-save").addClass("game-edit");
 		$(".game-save").removeClass("game-save");
-		
+
 		//Change cancel button to delete
 		$(".game-cancel").text("Delete");
 		$(".game-cancel").addClass("color-red");
@@ -67,11 +72,14 @@ $(document).on("click", ".game-cancel", function ()
 	$("#input-title").val($(".game-main").parent().attr('data-title'));
 	$("#input-cost").val($(".game-main").parent().attr('data-cost'));
 	$("#input-rating").val($(".game-main").parent().attr('data-rating'));
+	$("#input-category").val($(".game-main").parent().attr('data-category'));
 	$("#input-desp").val($(".game-main").parent().attr('data-desp'));
 
 	//Set inputs read only
-	$("input, textarea").attr("readonly", "");
-	$("input, textarea").removeClass("color-orange");
+	$("input, select, textarea").attr("readonly", "");
+	$("input, select, textarea").removeClass("color-orange");
+	$("option").attr("disabled", "");
+	$("option").attr("hidden", "");
 
 	//Change save button to edit
 	$(".game-save").text("Edit");
@@ -94,16 +102,18 @@ Called when edit button is pressed in info page
 $(document).on("click", ".game-edit", function ()
 {
 	//Allow input editable
-	$("input, textarea").removeAttr("readonly");
-	$("input, textarea").addClass("color-orange");
-	
+	$("input, select, textarea").removeAttr("readonly");
+	$("input, select, textarea").addClass("color-orange");
+	$("option").removeAttr("disabled");
+	$("option").removeAttr("hidden");
+
 	//Change edit button to save
 	$(".game-edit").text("Save");
 	$(".game-edit").addClass("color-green");
 	$(".game-edit").removeClass("color-orange");
 	$(".game-edit").addClass("game-save");
 	$(".game-edit").removeClass("game-edit");
-	
+
 	//Change delete button to cancel
 	$(".game-delete").text("Cancel");
 	$(".game-delete").addClass("color-orange");

@@ -21,9 +21,20 @@
 			<p>Cost: £<input class="color-orange" type="text" id="input-cost" name="cost" value=""></p>
 			<p>Rating: £<input class="color-orange" type="text" id="input-rating" name="rating" value=""></p>
 			
+			<p>
+				<label for="input-category">Category: </label>
+				<select class="color-orange" id="input-category" name="category">
+					<option value="" selected>None</option>
+
+					{% for category in categories | reverse %}
+						<option value="{{ category._id }}">{{ category.name }}</option>
+					{% endfor %}
+				</select>
+			</p>
+
 			<p><textarea class="color-orange" id="input-desp" rows="4"></textarea></p>
 		</div>
-		
+
 		<!-- Buttons -->
 		<p class="text-align-center col-12 offset-0 offset-md-3 col-md-2 no-gutters border-basic color-green game-create">Create</p>
 		<a href="/" class="text-align-center col-12 col-md-2 no-gutters border-basic color-orange"><p>Cancel</p></a>

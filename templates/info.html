@@ -14,7 +14,7 @@
 </head>
 
 <body>
-	<div data-id="{{ game._id }}" data-title="{{ game.title }}" data-cost="{{ game.cost }}" data-rating="{{ game.rating }}" data-desp="{{ game.desp }}" class="row no-gutters">
+	<div data-id="{{ game._id }}" data-title="{{ game.title }}" data-cost="{{ game.cost }}" data-rating="{{ game.rating }}" data-category="{{ game.category }}" data-desp="{{ game.desp }}" class="row no-gutters">
 		
 		<!-- Infos -->
 		<div class="col-12 offset-0 offset-md-3 col-md-6 no-gutters game-main border-basic color-blue">
@@ -23,9 +23,28 @@
 			<p>Cost: £<input type="text" id="input-cost" name="cost" value="{{ game.cost }}" readonly></p>
 			<p>Rating: £<input type="text" id="input-rating" name="rating" value="{{ game.rating }}" readonly></p>
 			
+			<p>
+				<label for="input-category">Category: </label>
+				<select id="input-category" name="category" readonly>
+					{% if game.category == "" %}
+						<option value="" disabled hidden selected>None</option>
+					{% else %}
+						<option value="" disabled hidden>None</option>
+					{% endif %}
+
+					{% for category in categories | reverse %}
+						{% if game.category == category._id %}
+							<option value="{{ category._id }}" disabled hidden selected>{{ category.name }}</option>
+						{% else %}
+							<option value="{{ category._id }}" disabled hidden>{{ category.name }}</option>
+						{% endif %}
+					{% endfor %}
+				</select>
+			</p>
+
 			<p><textarea id="input-desp" rows="4" readonly>{{ game.desp }}</textarea></p>
 		</div>
-		
+
 		<!-- Buttons -->
 		<p class="text-align-center col-12 offset-0 offset-md-3 col-md-2 no-gutters border-basic color-orange game-edit">Edit</p>
 		<p class="text-align-center col-12 offset-0 col-md-2 no-gutters border-basic color-red game-delete">Delete</p>

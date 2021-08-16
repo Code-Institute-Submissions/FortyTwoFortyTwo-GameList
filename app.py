@@ -23,21 +23,28 @@ def home():
     categories = mongo.db.categories.find()
     return render_template("index.html", games=games, categories=categories)
 
+@app.route("/new")
+def new():
+    categories = mongo.db.categories.find()
+    return render_template("new.html", categories=categories)
+
 @app.route("/info/<id>")
 def info(id):
     game = mongo.db.games.find_one({"_id": ObjectId(id)})
-    return render_template("info.html", game=game)
-
-@app.route("/new")
-def new():
-    return render_template("new.html")
+    categories = mongo.db.categories.find()
+    return render_template("info.html", game=game, categories=categories)
 
 @app.route("/game_insert", methods=['POST'])
 def game_insert():
+    category = request.form['category']
+    if (category != ""):
+        category = ObjectId(category)
+    
     game_data = {
         "title": request.form['title'],
         "cost": request.form['cost'],
         "rating": request.form['rating'],
+        "category": category,
         "desp": request.form['desp']
     }
 
@@ -46,10 +53,15 @@ def game_insert():
 
 @app.route("/game_update", methods=['POST'])
 def game_update():
+    category = request.form['category']
+    if (category != ""):
+        category = ObjectId(category)
+    
     game_data = {
         "title": request.form['title'],
         "cost": request.form['cost'],
         "rating": request.form['rating'],
+        "category": category,
         "desp": request.form['desp']
     }
 
@@ -69,6 +81,7 @@ def category_insert():
 @app.route("/category_delete", methods=['POST'])
 def category_delete():
     mongo.db.games.update_many({'category': ObjectId(request.form['id'])}, {'$set': {"category": ""}})
+    mongo.db.categories.delete_one({"_id": ObjectId(request.form['id'])})
     return request.form['id']
 
 if __name__ == "__main__":
