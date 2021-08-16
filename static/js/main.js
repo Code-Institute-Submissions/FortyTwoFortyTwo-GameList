@@ -23,6 +23,13 @@ $(document).on("click", ".game-save", function ()
 		$(".game-save").removeClass("color-green");
 		$(".game-save").addClass("game-edit");
 		$(".game-save").removeClass("game-save");
+		
+		//Change cancel button to delete
+		$(".game-cancel").text("Delete");
+		$(".game-cancel").addClass("color-red");
+		$(".game-cancel").removeClass("color-orange");
+		$(".game-cancel").addClass("game-delete");
+		$(".game-cancel").removeClass("game-cancel");
 	});
 });
 
@@ -41,6 +48,13 @@ $(document).on("click", ".game-edit", function ()
 	$(".game-edit").removeClass("color-orange");
 	$(".game-edit").addClass("game-save");
 	$(".game-edit").removeClass("game-edit");
+	
+	//Change delete button to cancel
+	$(".game-delete").text("Cancel");
+	$(".game-delete").addClass("color-orange");
+	$(".game-delete").removeClass("color-red");
+	$(".game-delete").addClass("game-cancel");
+	$(".game-delete").removeClass("game-delete");
 });
 
 /*
