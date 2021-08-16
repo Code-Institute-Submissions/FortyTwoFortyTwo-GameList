@@ -167,8 +167,30 @@ $(document).on("blur", "#categories-new", function ()
 	$.post("/category_insert", {name: value}, function(data, status)
 	{
 		//Add html underneath new category input for newly created category
-		$('<p data-id="' + data + '" class="border-basic color-blue"><span class="categories-text">' + value + '</span><span class="border-basic color-red categories-remove">X</span></p>').insertAfter("#categories-new");
+		$('<p data-id="' + data + '" class="categories-filter border-basic color-blue"><span class="categories-text">' + value + '</span><span class="border-basic color-red categories-remove">X</span></p>').insertAfter("#categories-new");
 	});
+});
+
+/*
+Called when category button is pressed in home page
+*/
+$(document).on("click", ".categories-filter", function ()
+{
+	$(".categories-filter").removeClass("color-orange");
+	$(".categories-filter").addClass("color-blue");
+	$(this).removeClass("color-blue");
+	$(this).addClass("color-orange");
+
+	let id = $(this).attr("data-id");
+	if (id == "")
+	{
+		$("a[data-category]").removeAttr("hidden");
+	}
+	else
+	{
+		$("a[data-category]").attr("hidden", "");
+		$("a[data-category='" + id + "']").removeAttr("hidden");
+	}
 });
 
 /*
@@ -181,6 +203,14 @@ $(document).on("click", ".categories-remove", function ()
 		let dataid = $(this).parent().attr('data-id');
 		$.post("/category_delete", {id: dataid}, function(data, status)
 		{
+			if ($("p[data-id='" + dataid + "']").hasClass("color-orange"))
+			{
+				$("a[data-category]").removeAttr("hidden");
+
+				$(".categories-filter[data-id='']").removeClass("color-blue");
+				$(".categories-filter[data-id='']").addClass("color-orange");
+			}
+
 			$("p[data-id='" + dataid + "']").remove();
 		});
 	}

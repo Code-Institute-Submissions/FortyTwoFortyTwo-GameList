@@ -28,19 +28,19 @@
 				<a href="/new"><p class="border-basic color-green">Add New Game</p></a>
 
 				{% for game in games | reverse %}
-					<a href="/info/{{ game._id }}"><p class="border-basic color-purple">{{ game.title }}</p></a>
+					<a href="/info/{{ game._id }}" data-category="{{ game.category }}"><p class="border-basic color-purple">{{ game.title }}</p></a>
 				{% endfor %}
 			</div>
-			
+
 			<!-- List of categories -->
 			<div class="col-6 offset-0 offset-md-1 col-md-3">
 				<input class="text-basic border-basic color-green" type="text" id="categories-new" name="categories" value="Add New Category">
 
 				{% for category in categories | reverse %}
-					<p data-id="{{ category._id }}" class="border-basic color-blue"><span class="categories-text">{{ category.name }}</span><span class="border-basic color-red categories-remove">X</span></p>
+					<p data-id="{{ category._id }}" class="categories-filter border-basic color-blue"><span class="categories-text">{{ category.name }}</span><span class="border-basic color-red categories-remove">X</span></p>
 				{% endfor %}
 
-				<p data-id="" class="border-basic color-orange"><span class="categories-text">None</span></p>
+				<p data-id="" class="categories-filter border-basic color-orange"><span class="categories-text">None</span></p>
 			</div>
 		</div>
 	</div>
