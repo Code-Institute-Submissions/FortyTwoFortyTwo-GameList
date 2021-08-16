@@ -20,12 +20,17 @@ mongo = PyMongo(app)
 @app.route("/")
 def home():
     games = mongo.db.games.find()
-    return render_template("index.html", games=games)
+    categories = mongo.db.categories.find()
+    return render_template("index.html", games=games, categories=categories)
 
 @app.route("/info/<id>")
 def info(id):
     game = mongo.db.games.find_one({"_id": ObjectId(id)})
     return render_template("info.html", game=game)
+
+@app.route("/new")
+def new():
+    return render_template("new.html")
 
 @app.route("/game_insert", methods=['POST'])
 def game_insert():

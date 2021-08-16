@@ -31,6 +31,15 @@
 					<a href="/info/{{ game._id }}"><p class="border-basic color-purple">{{ game.title }}</p></a>
 				{% endfor %}
 			</div>
+			
+			<!-- List of categories -->
+			<div class="col-6 offset-0 offset-md-1 col-md-3">
+				{% for category in categories | reverse %}
+					<p class="border-basic color-blue">{{ category.name }}</p>
+				{% endfor %}
+
+				<p class="border-basic color-orange">None</p>
+			</div>
 		</div>
 	</div>
 </body>
