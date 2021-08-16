@@ -66,6 +66,11 @@ def category_insert():
     x = mongo.db.categories.insert_one({"name": request.form['name']})
     return str(x.inserted_id)
 
+@app.route("/category_delete", methods=['POST'])
+def category_delete():
+    mongo.db.games.update_many({'category': ObjectId(request.form['id'])}, {'$set': {"category": ""}})
+    return request.form['id']
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=os.environ.get("PORT"),

@@ -157,6 +157,21 @@ $(document).on("blur", "#categories-new", function ()
 	$.post("/category_insert", {name: value}, function(data, status)
 	{
 		//Add html underneath new category input for newly created category
-		$('<p data-id="' + data + '" class="border-basic color-blue">' + value + '</p>').insertAfter("#categories-new");
+		$('<p data-id="' + data + '" class="border-basic color-blue"><span class="categories-text">' + value + '</span><span class="border-basic color-red categories-remove">X</span></p>').insertAfter("#categories-new");
 	});
+});
+
+/*
+Called when category remove button is pressed in home page
+*/
+$(document).on("click", ".categories-remove", function ()
+{
+    if (window.confirm("Are you sure you want to delete?"))
+	{
+		let dataid = $(this).parent().attr('data-id');
+		$.post("/category_delete", {id: dataid}, function(data, status)
+		{
+			$("p[data-id='" + dataid + "']").remove();
+		});
+	}
 });
