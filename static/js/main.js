@@ -13,6 +13,12 @@ $(document).on("click", ".game-save", function ()
 	//Update datas to database
 	$.post("/game_update", {id: dataid, title: datatitle, cost: datacost, rating: datarating, desp: datadesp}, function(data, status)
 	{
+		//Update data attr for new value
+		$(".game-main").parent().attr('data-title', datatitle);
+		$(".game-main").parent().attr('data-cost', datacost);
+		$(".game-main").parent().attr('data-rating', datarating);
+		$(".game-main").parent().attr('data-desp', datadesp);
+		
 		//Set inputs read only
 		$("input, textarea").attr("readonly", "");
 		$("input, textarea").removeClass("color-orange");
@@ -31,6 +37,36 @@ $(document).on("click", ".game-save", function ()
 		$(".game-cancel").addClass("game-delete");
 		$(".game-cancel").removeClass("game-cancel");
 	});
+});
+
+/*
+Called when cancel button is pressed in info page
+*/
+$(document).on("click", ".game-cancel", function ()
+{
+	//Set value back to what it was before from attr
+	$("#input-title").val($(".game-main").parent().attr('data-title'));
+	$("#input-cost").val($(".game-main").parent().attr('data-cost'));
+	$("#input-rating").val($(".game-main").parent().attr('data-rating'));
+	$("#input-desp").val($(".game-main").parent().attr('data-desp'));
+
+	//Set inputs read only
+	$("input, textarea").attr("readonly", "");
+	$("input, textarea").removeClass("color-orange");
+
+	//Change save button to edit
+	$(".game-save").text("Edit");
+	$(".game-save").addClass("color-orange");
+	$(".game-save").removeClass("color-green");
+	$(".game-save").addClass("game-edit");
+	$(".game-save").removeClass("game-save");
+
+	//Change cancel button to delete
+	$(".game-cancel").text("Delete");
+	$(".game-cancel").addClass("color-red");
+	$(".game-cancel").removeClass("color-orange");
+	$(".game-cancel").addClass("game-delete");
+	$(".game-cancel").removeClass("game-cancel");
 });
 
 /*
