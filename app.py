@@ -27,6 +27,18 @@ def info(id):
     game = mongo.db.games.find_one({"_id": ObjectId(id)})
     return render_template("info.html", game=game)
 
+@app.route("/game_insert", methods=['POST'])
+def game_insert():
+    game_data = {
+        "title": request.form['title'],
+        "cost": request.form['cost'],
+        "rating": request.form['rating'],
+        "desp": request.form['desp']
+    }
+
+    x = mongo.db.games.insert_one(game_data)
+    return str(x.inserted_id)
+
 @app.route("/game_update", methods=['POST'])
 def game_update():
     game_data = {

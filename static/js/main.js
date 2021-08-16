@@ -1,4 +1,23 @@
 /*
+Called when create button is pressed in new page
+*/
+$(document).on("click", ".game-create", function ()
+{
+	//Collect datas to insert
+	let datatitle = $("#input-title")[0].value;
+	let datacost = $("#input-cost")[0].value;
+	let datarating = $("#input-rating")[0].value;
+	let datadesp = $("#input-desp")[0].value;
+
+	//Insert datas to database
+	$.post("/game_insert", {title: datatitle, cost: datacost, rating: datarating, category: datacategory, desp: datadesp}, function(data, status)
+	{
+		//Insert complete, open to info page
+		window.open("/info/" + data, "_self");
+	});
+});
+
+/*
 Called when save button is pressed in info page
 */
 $(document).on("click", ".game-save", function ()
