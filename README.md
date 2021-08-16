@@ -1,8 +1,15 @@
 # GameList
 
 ## Index – Table of Contents
+* [Designs](#designs)
 * [Technologies Used](#technologies-used)
 * [Testing](#testing)
+
+## Designs
+![Home page](README-files/home.png)
+![Category selected](README-files/categories.png)
+![Creating new game](README-files/new.png)
+![Game created](README-files/edit.png)
 
 ## Technologies used
 * HTML5
