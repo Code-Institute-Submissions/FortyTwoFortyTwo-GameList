@@ -1,5 +1,32 @@
-GameList
-
-{% for game in games | reverse %}
-	{{ game.title }}
-{% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" type="text/css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+	<title>GameList</title>
+</head>
+<body>
+	<header>
+		<!-- Title -->
+		<h1 class="text-align-center">
+			GameList
+		</h1>
+	</header>
+	
+	<div class="col">
+		<div class="row no-gutters">
+			
+			<!-- List of games -->
+			<div class="col-6 offset-0 offset-md-2 col-md-4">
+				{% for game in games | reverse %}
+					<p class="border-basic color-purple">{{ game.title }}</p>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</body>
+</html>

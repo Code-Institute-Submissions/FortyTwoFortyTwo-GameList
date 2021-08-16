@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700");
+
+/* ---------------------------------- Border */
+
+.border-basic {
+	padding-left: 20px;
+	padding-right: 20px;
+
+	border-style: solid;
+	border-radius: 2rem;
+	border-width: 0.2rem;
+}
+
+p {
+	padding-left: 30px;
+	padding-right: 30px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	font-size: 30px;
+}
+
+
+/* ---------------------------------- Text */
+
+.text-align-center {
+	text-align: center;
+}
+
+p {
+	font-family: "Exo", sans-serif;
+	font-weight: 700;
+}
+
+/* ---------------------------------- Colors */
+
+.color-purple {
+	border-color: #800080;
+	background-color: #d87093;
+}
