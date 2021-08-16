@@ -48,11 +48,15 @@ Called when delete button is pressed in info page
 */
 $(document).on("click", ".game-delete", function ()
 {
-    //Delete game in database
-	let dataid = $(".game-main").parent().attr('data-id');
-	$.post("/game_delete", {id: dataid}, function(data, status)
+    //Ask for confirm
+	if (window.confirm("Are you sure you want to delete?"))
 	{
-		//Delete complete, open home page
-		window.open("/", "_self");
-	});
+		//"Ok" is pressed, delete game in database
+		let dataid = $(".game-main").parent().attr('data-id');
+		$.post("/game_delete", {id: dataid}, function(data, status)
+		{
+			//Delete complete, open home page
+			window.open("/", "_self");
+		});
+	}
 });
