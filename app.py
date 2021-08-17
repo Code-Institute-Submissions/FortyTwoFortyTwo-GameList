@@ -1,7 +1,8 @@
 import os
 from flask import (
     Flask, flash, render_template,
-    redirect, request, session, url_for)
+    redirect, request, session,
+    url_for, abort)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 if os.path.exists("env.py"):
@@ -31,6 +32,10 @@ def new():
 @app.route("/info/<id>")
 def info(id):
     game = mongo.db.games.find_one({"_id": ObjectId(id)})
+    if not ObjectId.is_valid(id):
+        abort(404)
+
+    game = mongo.db.games.find_one_or_404({"_id": ObjectId(id)})
     categories = mongo.db.categories.find()
     return render_template("info.html", game=game, categories=categories)
 
@@ -53,6 +58,9 @@ def game_insert():
 
 @app.route("/game_update", methods=['POST'])
 def game_update():
+    if not ObjectId.is_valid(request.form['id']):
+        abort(404)
+    
     category = request.form['category']
     if (category != ""):
         category = ObjectId(category)
@@ -65,7 +73,7 @@ def game_update():
         "desp": request.form['desp']
     }
 
-    mongo.db.games.update_one({'_id': ObjectId(request.form['id'])}, {'$set': game_data})
+    mongo.db.games.update_one_or_404({'_id': ObjectId(request.form['id'])}, {'$set': game_data})
     return request.form['id']
 
 @app.route("/game_delete", methods=['POST'])
