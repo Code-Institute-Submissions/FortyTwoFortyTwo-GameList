@@ -55,6 +55,8 @@ Categories that can be filtered to only show games in a selected category
 ## Technologies used
 * HTML5
 * CSS3
+* Javascript
+* Python
 * [HTML Validator](https://validator.w3.org) for validity of HTML
 * [CSS Validator](https://jigsaw.w3.org/css-validator) for validity of CSS
 * [Bootstrap4](https://getbootstrap.com) for the grid layout, components and styling
@@ -106,6 +108,32 @@ In the command line type -
 To add all new files or modified file use " ."  - To add a single file use the pathway to the file eg .index.html  or assets/css/style.css
 When committing make sure your comments are clear about what changes have been made. 
 Pushing will send your work to the repository
+
+#### Heroku Deployment
+
+To deploy to heroku, take the following steps:
+
+
+1. Create a `requirements.txt` file using the terminal command `pip freeze > requirements.txt`.
+2. Create a `Procfile` with the terminal command `echo web: python app.py > Procfile`.
+3. `git add` and `git commit` the new requirements and Procfile and then `git push` the project to GitHub.
+3. Create a new app on the [Heroku website](https://dashboard.heroku.com/apps) by clicking the "New" button in your dashboard. Give it a name and set the region to Europe.
+4. From the heroku dashboard of your newly created application, click on "Deploy" > "Deployment method" and select GitHub.
+5. Confirm the linking of the heroku app to the correct GitHub repository.
+6. In the heroku dashboard for the application, click on "Settings" > "Reveal Config Vars".
+7. Set the following config vars:
+| Key | Value |
+ --- | ---
+DEBUG | FALSE
+IP | 0.0.0.0
+MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority`
+PORT | 5000
+SECRET_KEY | `<your_secret_key>`
+- To get you MONGO_URI read the MongoDB Atlas documentation [here](https://docs.atlas.mongodb.com/)
+
+8. In the heroku dashboard, click "Deploy".
+9. In the "Manual Deployment" section of this page, made sure the master branch is selected and then click "Deploy Branch".
+10. The site is now successfully deployed.
 
 #### Forking
 By forking the GitHub Repository, you can make a copy of the original repository in your own GitHub account.  This means we can view or make changes without making the changes affecting the original.
