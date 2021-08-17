@@ -167,7 +167,7 @@ $(document).on("blur", "#categories-new", function ()
 	$.post("/category_insert", {name: value}, function(data, status)
 	{
 		//Add html underneath new category input for newly created category
-		$('<p data-id="' + data + '" class="categories-filter border-basic color-blue"><span class="categories-text">' + value + '</span><span class="border-basic color-red categories-remove">X</span></p>').insertAfter("#categories-new");
+		$('<p data-id="' + data + '" class="categories-filter border-basic color-blue"><span class="categories-text">' + value + '</span><span class="border-basic color-red categories-remove">X</span></p>').insertAfter("p[data-id='']");
 	});
 });
 
