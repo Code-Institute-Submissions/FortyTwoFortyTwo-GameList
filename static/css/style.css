@@ -30,9 +30,8 @@ p, .text-basic {
 	text-align: center;
 }
 
-a {
+a, select {
 	color: #000000;
-	width: 100%;
 }
 
 p, a, input, select, textarea {
@@ -40,7 +39,7 @@ p, a, input, select, textarea {
 	font-weight: 700;
 }
 
-input[readonly], select[readonly], textarea[readonly] {
+input[readonly], select[disabled], textarea[readonly] {
 	background: none;
 	border: none;
 }

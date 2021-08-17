@@ -25,18 +25,18 @@
 			
 			<p>
 				<label for="input-category">Category: </label>
-				<select id="input-category" name="category" readonly>
+				<select id="input-category" name="category" disabled>
 					{% if game.category == "" %}
-						<option value="" disabled hidden selected>None</option>
+						<option value="" selected>None</option>
 					{% else %}
-						<option value="" disabled hidden>None</option>
+						<option value="">None</option>
 					{% endif %}
 
 					{% for category in categories | reverse %}
 						{% if game.category == category._id %}
-							<option value="{{ category._id }}" disabled hidden selected>{{ category.name }}</option>
+							<option value="{{ category._id }}" selected>{{ category.name }}</option>
 						{% else %}
-							<option value="{{ category._id }}" disabled hidden>{{ category.name }}</option>
+							<option value="{{ category._id }}">{{ category.name }}</option>
 						{% endif %}
 					{% endfor %}
 				</select>

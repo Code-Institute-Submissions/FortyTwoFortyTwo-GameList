@@ -42,10 +42,9 @@ $(document).on("click", ".game-save", function ()
 		$(".game-main").parent().attr('data-desp', datadesp);
 
 		//Set inputs read only
-		$("input, select, textarea").attr("readonly", "");
 		$("input, select, textarea").removeClass("color-orange");
-		$("option").attr("disabled", "");
-		$("option").attr("hidden", "");
+		$("input, textarea").attr("readonly", "");
+		$("select").attr("disabled", "");
 
 		//Change save button to edit
 		$(".game-save").text("Edit");
@@ -76,10 +75,9 @@ $(document).on("click", ".game-cancel", function ()
 	$("#input-desp").val($(".game-main").parent().attr('data-desp'));
 
 	//Set inputs read only
-	$("input, select, textarea").attr("readonly", "");
 	$("input, select, textarea").removeClass("color-orange");
-	$("option").attr("disabled", "");
-	$("option").attr("hidden", "");
+	$("input, textarea").attr("readonly", "");
+	$("select").attr("disabled", "");
 
 	//Change save button to edit
 	$(".game-save").text("Edit");
@@ -102,10 +100,9 @@ Called when edit button is pressed in info page
 $(document).on("click", ".game-edit", function ()
 {
 	//Allow input editable
-	$("input, select, textarea").removeAttr("readonly");
 	$("input, select, textarea").addClass("color-orange");
-	$("option").removeAttr("disabled");
-	$("option").removeAttr("hidden");
+	$("input, textarea").removeAttr("readonly");
+	$("select").removeAttr("disabled");
 
 	//Change edit button to save
 	$(".game-edit").text("Save");
