@@ -45,6 +45,10 @@ input[readonly], select[readonly], textarea[readonly] {
 	border: none;
 }
 
+.categories-filter, .game-create, .game-edit, .game-delete, .game-save, .game-cancel {
+	cursor: pointer;
+}
+
 /* ---------------------------------- Inputs */
 
 #input-title {
