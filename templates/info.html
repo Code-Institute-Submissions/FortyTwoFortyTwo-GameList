@@ -19,9 +19,9 @@
 		<!-- Infos -->
 		<div class="col-12 offset-0 offset-md-3 col-md-6 no-gutters game-main border-basic color-blue">
 			
-			<p class="text-align-center"><input class="text-align-center" type="text" id="input-title" name="title" value="{{ game.title }}" readonly></p>
-			<p>Cost: £<input type="text" id="input-cost" name="cost" value="{{ game.cost }}" readonly></p>
-			<p>Rating: £<input type="text" id="input-rating" name="rating" value="{{ game.rating }}" readonly></p>
+			<p class="text-align-center"><input class="text-align-center" type="text" id="input-title" name="title" value="{{ game.title }}" required readonly></p>
+			<p>Cost: £<input type="number" id="input-cost" name="cost" value="{{ game.cost }}" min="0" required readonly></p>
+			<p>Rating: <input type="number" id="input-rating" name="rating" value="{{ game.rating }}" min="0" max="100" required readonly></p>
 			
 			<p>
 				<label for="input-category">Category: </label>

@@ -10,6 +10,15 @@ $(document).on("click", ".game-create", function ()
 	let datacategory = $("#input-category")[0].value;
 	let datadesp = $("#input-desp")[0].value;
 
+	if (datatitle == "")
+	{
+		alert("Title field must not be empty");
+		return;
+	}
+
+	datacost = parseFloat(datacost).toFixed(2);
+	datarating = parseInt(datarating);
+
 	//Insert datas to database
 	$.post("/game_insert", {title: datatitle, cost: datacost, rating: datarating, category: datacategory, desp: datadesp}, function(data, status)
 	{
@@ -30,6 +39,15 @@ $(document).on("click", ".game-save", function ()
 	let datarating = $("#input-rating")[0].value;
 	let datacategory = $("#input-category")[0].value;
 	let datadesp = $("#input-desp")[0].value;
+	
+	if (datatitle == "")
+	{
+		alert("Title field must not be empty");
+		return;
+	}
+	
+	datacost = parseFloat(datacost).toFixed(2);
+	datarating = parseInt(datarating);
 	
 	//Update datas to database
 	$.post("/game_update", {id: dataid, title: datatitle, cost: datacost, rating: datarating, category: datacategory, desp: datadesp}, function(data, status)
