@@ -73,7 +73,7 @@ def game_update():
         "desp": request.form['desp']
     }
 
-    mongo.db.games.update_one_or_404({'_id': ObjectId(request.form['id'])}, {'$set': game_data})
+    mongo.db.games.update_one({'_id': ObjectId(request.form['id'])}, {'$set': game_data})
     return request.form['id']
 
 @app.route("/game_delete", methods=['POST'])
