@@ -77,6 +77,11 @@ $(document).on("click", ".game-save", function ()
 		$(".game-cancel").removeClass("color-orange");
 		$(".game-cancel").addClass("game-delete");
 		$(".game-cancel").removeClass("game-cancel");
+	})
+	.fail(function(response)
+	{
+		//Display error html text
+		$("html").html(response.responseText);
 	});
 });
 
@@ -151,6 +156,11 @@ $(document).on("click", ".game-delete", function ()
 		{
 			//Delete complete, open home page
 			window.open("/", "_self");
+		})
+		.fail(function(response)
+		{
+			//Display error html text
+			$("html").html(response.responseText);
 		});
 	}
 });
@@ -227,6 +237,11 @@ $(document).on("click", ".categories-remove", function ()
 			}
 
 			$("p[data-id='" + dataid + "']").remove();
+		})
+		.fail(function(response)
+		{
+			//Display error html text
+			$("html").html(response.responseText);
 		});
 	}
 });
