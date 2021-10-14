@@ -59,6 +59,7 @@ Categories that can be filtered to only show games in a selected category
 * Python
 * [HTML Validator](https://validator.w3.org) for validity of HTML
 * [CSS Validator](https://jigsaw.w3.org/css-validator) for validity of CSS
+* [PEP8](http://pep8online.com) for validity of python
 * [Bootstrap4](https://getbootstrap.com) for the grid layout, components and styling
 * [Git](https://git-scm.com) for version control
 * [GitHub](https://github.com) for the repository to store the files
