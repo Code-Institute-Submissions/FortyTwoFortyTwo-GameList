@@ -24,10 +24,12 @@ def home():
     categories = mongo.db.categories.find()
     return render_template("index.html", games=games, categories=categories)
 
+
 @app.route("/new")
 def new():
     categories = mongo.db.categories.find()
     return render_template("new.html", categories=categories)
+
 
 @app.route("/info/<id>")
 def info(id):
@@ -38,12 +40,13 @@ def info(id):
     categories = mongo.db.categories.find()
     return render_template("info.html", game=game, categories=categories)
 
+
 @app.route("/game_insert", methods=['POST'])
 def game_insert():
     category = request.form['category']
     if (category != ""):
         category = ObjectId(category)
-    
+
     game_data = {
         "title": request.form['title'],
         "cost": request.form['cost'],
@@ -55,18 +58,20 @@ def game_insert():
     x = mongo.db.games.insert_one(game_data)
     return str(x.inserted_id)
 
+
 @app.route("/game_update", methods=['POST'])
 def game_update():
     if not ObjectId.is_valid(request.form['id']):
         abort(400)
-    
-    if not bool(mongo.db.games.find_one({"_id": ObjectId(request.form['id'])})):
+
+    id = ObjectId(request.form['id'])
+    if not bool(mongo.db.games.find_one({"_id": id})):
         abort(400)
 
     category = request.form['category']
     if (category != ""):
         category = ObjectId(category)
-    
+
     game_data = {
         "title": request.form['title'],
         "cost": request.form['cost'],
@@ -75,36 +80,42 @@ def game_update():
         "desp": request.form['desp']
     }
 
-    mongo.db.games.update_one({'_id': ObjectId(request.form['id'])}, {'$set': game_data})
+    mongo.db.games.update_one({'_id': id}, {'$set': game_data})
     return request.form['id']
+
 
 @app.route("/game_delete", methods=['POST'])
 def game_delete():
     if not ObjectId.is_valid(request.form['id']):
         abort(400)
-    
-    if not bool(mongo.db.games.find_one({"_id": ObjectId(request.form['id'])})):
+
+    id = ObjectId(request.form['id'])
+    if not bool(mongo.db.games.find_one({"_id": id})):
         abort(400)
-    
-    mongo.db.games.delete_one({"_id": ObjectId(request.form['id'])})
+
+    mongo.db.games.delete_one({"_id": id})
     return request.form['id']
+
 
 @app.route("/category_insert", methods=['POST'])
 def category_insert():
     x = mongo.db.categories.insert_one({"name": request.form['name']})
     return str(x.inserted_id)
 
+
 @app.route("/category_delete", methods=['POST'])
 def category_delete():
     if not ObjectId.is_valid(request.form['id']):
         abort(400)
-    
-    if not bool(mongo.db.categories.find_one({"_id": ObjectId(request.form['id'])})):
+
+    id = ObjectId(request.form['id'])
+    if not bool(mongo.db.categories.find_one({"_id": id})):
         abort(400)
-    
-    mongo.db.games.update_many({'category': ObjectId(request.form['id'])}, {'$set': {"category": ""}})
-    mongo.db.categories.delete_one({"_id": ObjectId(request.form['id'])})
+
+    mongo.db.games.update_many({'category': id}, {'$set': {"category": ""}})
+    mongo.db.categories.delete_one({"_id": id})
     return request.form['id']
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
