@@ -10,12 +10,14 @@ $(document).on("click", ".game-create", function ()
 	let datacategory = $("#input-category")[0].value;
 	let datadesp = $("#input-desp")[0].value;
 
+	//Check if title is entered
 	if (datatitle == "")
 	{
 		alert("Title field must not be empty");
 		return;
 	}
 
+	//Set cost and rating to fixed values
 	datacost = parseFloat(datacost).toFixed(2);
 	datarating = parseInt(datarating);
 
@@ -40,12 +42,14 @@ $(document).on("click", ".game-save", function ()
 	let datacategory = $("#input-category")[0].value;
 	let datadesp = $("#input-desp")[0].value;
 	
+	//Check if title is entered
 	if (datatitle == "")
 	{
 		alert("Title field must not be empty");
 		return;
 	}
 	
+	//Set cost and rating to fixed values
 	datacost = parseFloat(datacost).toFixed(2);
 	datarating = parseInt(datarating);
 	
@@ -58,7 +62,7 @@ $(document).on("click", ".game-save", function ()
 		$(".game-main").parent().attr('data-rating', datarating);
 		$(".game-main").parent().attr('data-category', datacategory);
 		$(".game-main").parent().attr('data-desp', datadesp);
-
+		
 		//Set inputs read only
 		$("input, select, textarea").removeClass("color-orange");
 		$("input, textarea").attr("readonly", "");
@@ -147,7 +151,7 @@ Called when delete button is pressed in info page
 */
 $(document).on("click", ".game-delete", function ()
 {
-    //Ask for confirm
+    //Ask to confirm delete
 	if (window.confirm("Are you sure you want to delete?"))
 	{
 		//"Ok" is pressed, delete game in database
@@ -179,6 +183,7 @@ Called when new category button is no longer focused to be typed in home page
 */
 $(document).on("blur", "#categories-new", function ()
 {
+	//Get value entered
 	let value = $("#categories-new")[0].value;
 
 	//Set text back to what it was
@@ -186,8 +191,10 @@ $(document).on("blur", "#categories-new", function ()
 
 	//If nothing entered, dont create new category
 	if (value == "")
+	{
 		return;
-	
+	}
+
 	//Insert new category in database
 	$.post("/category_insert", {name: value}, function(data, status)
 	{
@@ -201,19 +208,27 @@ Called when category button is pressed in home page
 */
 $(document).on("click", ".categories-filter", function ()
 {
+	//Reset selected categories color back to blue
 	$(".categories-filter").removeClass("color-orange");
 	$(".categories-filter").addClass("color-blue");
+
+	//Set selected category color to orange
 	$(this).removeClass("color-blue");
 	$(this).addClass("color-orange");
 
+	//Get category id selected
 	let id = $(this).attr("data-id");
 	if (id == "")
 	{
+		//"None" is selected, re-display all games
 		$("a[data-category]").removeAttr("hidden");
 	}
 	else
 	{
+		//Hide all games
 		$("a[data-category]").attr("hidden", "");
+		
+		//Show all games which has selected category id
 		$("a[data-category='" + id + "']").removeAttr("hidden");
 	}
 });
@@ -223,19 +238,23 @@ Called when category remove button is pressed in home page
 */
 $(document).on("click", ".categories-remove", function ()
 {
-    if (window.confirm("Are you sure you want to delete?"))
+    //Ask to confirm delete
+	if (window.confirm("Are you sure you want to delete?"))
 	{
+		//"Ok" is pressed, delete game in database
 		let dataid = $(this).parent().attr('data-id');
 		$.post("/category_delete", {id: dataid}, function(data, status)
 		{
+			//Check if deleted category is also selected to filter games
 			if ($("p[data-id='" + dataid + "']").hasClass("color-orange"))
 			{
+				//Set "none" as selected category
 				$("a[data-category]").removeAttr("hidden");
-
 				$(".categories-filter[data-id='']").removeClass("color-blue");
 				$(".categories-filter[data-id='']").addClass("color-orange");
 			}
-
+			
+			//Remove category from list
 			$("p[data-id='" + dataid + "']").remove();
 		})
 		.fail(function(response)
