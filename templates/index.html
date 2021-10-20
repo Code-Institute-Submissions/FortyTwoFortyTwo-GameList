@@ -15,9 +15,21 @@
 <body>
 	<header>
 		<!-- Title -->
-		<h1 class="text-align-center">
-			GameList
-		</h1>
+		<div class="col header-main">
+			<div class="row no-gutters">
+				<div class="col-12">
+					<h1 class="text-align-center border-square color-blue header-text">GameList</h1>
+				</div>
+				
+				<div class="col-12 col-md-6">
+					<a href="/"><p class="text-align-center border-square color-purple header-text">Home Page</p></a>
+				</div>
+				
+				<div class="col-12 col-md-6">
+					<a href="/new"><p class="text-align-center border-square color-purple header-text">Add new Game</p></a>
+				</div>
+			</div>
+		</div>
 	</header>
 	
 	<div class="col">
@@ -25,20 +37,20 @@
 			
 			<!-- List of games -->
 			<div class="col-6 offset-0 offset-md-2 col-md-4">
-				<a href="/new"><p class="border-basic color-green">Add New Game</p></a>
+				<a href="/new"><p class="border-curve color-green">Add New Game</p></a>
 
 				{% for game in games | reverse %}
-					<a href="/info/{{ game._id }}" data-category="{{ game.category }}"><p class="border-basic color-purple">{{ game.title }}</p></a>
+					<a href="/info/{{ game._id }}" data-category="{{ game.category }}"><p class="border-curve color-purple">{{ game.title }}</p></a>
 				{% endfor %}
 			</div>
 
 			<!-- List of categories -->
 			<div class="col-6 offset-0 offset-md-1 col-md-3">
-				<input class="text-basic border-basic color-green" type="text" id="categories-new" name="categories" value="Add Category">
-				<p data-id="" class="categories-filter border-basic color-orange"><span class="categories-text">All</span></p>
+				<input class="text-basic border-curve color-green" type="text" id="categories-new" name="categories" value="Add Category">
+				<p data-id="" class="categories-filter border-curve color-orange"><span class="categories-text">All</span></p>
 				
 				{% for category in categories | reverse %}
-					<p data-id="{{ category._id }}" class="categories-filter border-basic color-blue"><span class="categories-text">{{ category.name }}</span><span class="border-basic color-red categories-remove">X</span></p>
+					<p data-id="{{ category._id }}" class="categories-filter border-curve color-blue"><span class="categories-text">{{ category.name }}</span><span class="border-curve color-red categories-remove">X</span></p>
 				{% endfor %}
 			</div>
 		</div>

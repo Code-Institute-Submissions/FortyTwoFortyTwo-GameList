@@ -2,13 +2,21 @@
 
 /* ---------------------------------- Border */
 
-.border-basic {
+.border-square {
 	padding-left: 20px;
 	padding-right: 20px;
 
 	border-style: solid;
-	border-radius: 2rem;
 	border-width: 0.2rem;
+}
+
+.border-curve {
+	padding-left: 20px;
+	padding-right: 20px;
+
+	border-style: solid;
+	border-width: 0.2rem;
+	border-radius: 2rem;
 }
 
 p, .text-basic {
@@ -17,6 +25,17 @@ p, .text-basic {
 	margin-top: 2px;
 	margin-bottom: 2px;
 	font-size: 30px;
+}
+
+.header-main {
+	padding: 0px;
+	margin-bottom: 20px;
+	margin-right: 0px;
+}
+
+.header-text {
+	padding: 0px;
+	margin: 0px;
 }
 
 .game-main {

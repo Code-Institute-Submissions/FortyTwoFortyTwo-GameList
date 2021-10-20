@@ -13,10 +13,29 @@
 	<title>GameList</title>
 </head>
 <body>
+	<header>
+		<!-- Title -->
+		<div class="col header-main">
+			<div class="row no-gutters list-inline-item">
+				<div class="col-12">
+					<h1 class="text-align-center border-square color-blue header-text">GameList</h1>
+				</div>
+				
+				<div class="col-12 col-md-6">
+					<a href="/"><p class="text-align-center border-square color-purple header-text">Home Page</p></a>
+				</div>
+				
+				<div class="col-12 col-md-6">
+					<a href="/new"><p class="text-align-center border-square color-purple header-text">Add new Game</p></a>
+				</div>
+			</div>
+		</div>
+	</header>
+	
 	<div class="row no-gutters">
 		
 		<!-- Infos -->
-		<div class="col-12 offset-0 offset-md-3 col-md-6 no-gutters game-main border-basic color-blue">
+		<div class="col-12 offset-0 offset-md-3 col-md-6 no-gutters game-main border-curve color-blue">
 			<p class="text-align-center"><input class="color-orange" type="text" id="input-title" name="title" value="" required></p>
 			<p>Cost: £<input class="color-orange" type="number" id="input-cost" name="cost" value="0" required></p>
 			<p>Rating: <input class="color-orange" type="number" id="input-rating" name="rating" min="0" max="100" required></p>
@@ -36,8 +55,8 @@
 		</div>
 
 		<!-- Buttons -->
-		<p class="text-align-center col-12 offset-0 offset-md-3 col-md-2 no-gutters border-basic color-green game-create">Create</p>
-		<a href="/" class="text-align-center col-12 col-md-2 no-gutters border-basic color-orange"><p>Cancel</p></a>
+		<p class="text-align-center col-12 offset-0 offset-md-3 col-md-2 no-gutters border-curve color-green game-create">Create</p>
+		<a href="/" class="text-align-center col-12 col-md-2 no-gutters border-curve color-orange"><p>Cancel</p></a>
 	</div>
 </body>
 </html>
