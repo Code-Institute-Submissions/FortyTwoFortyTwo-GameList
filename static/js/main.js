@@ -49,10 +49,14 @@ $(document).on("click", ".game-save", function ()
 		return;
 	}
 	
-	//Set cost and rating to fixed values
-	datacost = parseFloat(datacost).toFixed(2);
-	datarating = parseInt(datarating);
-	
+	//Ensure cost has 2 decimal points
+	datacost = datacost ? parseFloat(datacost).toFixed(2) : "0.00";
+	$("#input-cost")[0].value = datacost;
+
+	//Ensure rating is integer
+	datarating = datarating ? parseInt(datarating) : "0";
+	$("#input-rating")[0].value = datarating;
+
 	//Update datas to database
 	$.post("/game_update", {id: dataid, title: datatitle, cost: datacost, rating: datarating, category: datacategory, desp: datadesp}, function(data, status)
 	{
