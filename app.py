@@ -147,7 +147,10 @@ def category_delete():
         abort(400)
 
     # Update all games using same category id by setting to none (blank)
-    mongo.db.games.update_many({'category': id}, {'$set': {"category": ""}})
+    games = mongo.db.games.find()
+    for game in games:
+        if game.get("category") == id:
+            mongo.db.games.update_one({'category': id}, {'$set': {"category": ""}})
 
     # Delete data in table by id
     mongo.db.categories.delete_one({"_id": id})
