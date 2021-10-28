@@ -158,7 +158,9 @@ def category_delete():
     games = mongo.db.games.find()
     for game in games:
         if game.get("category") == id:
-            mongo.db.games.update_one({'category': id}, {'$set': {"category": ""}})
+            mongo.db.games.update_one(
+                {'category': id}, {'$set': {"category": ""}}
+            )
 
     # Delete data in table by id
     mongo.db.categories.delete_one({"_id": id})
