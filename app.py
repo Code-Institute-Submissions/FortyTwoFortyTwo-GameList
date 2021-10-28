@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
-    # Open home page with games and categories database
+    """ Open home page with games and categories database """
     games = mongo.db.games.find()
     categories = mongo.db.categories.find()
     return render_template("index.html", games=games, categories=categories)
@@ -28,13 +28,15 @@ def home():
 
 @app.route("/new")
 def new():
-    # Open page for creating new game
+    """ Open page for creating new game """
     categories = mongo.db.categories.find()
     return render_template("new.html", categories=categories)
 
 
 @app.route("/info/<id>")
 def info(id):
+    """ Open info page about specified game """
+
     # Check if id entered is valid, display 404 error page if not valid
     if not ObjectId.is_valid(id):
         abort(404)
@@ -49,6 +51,8 @@ def info(id):
 
 @app.route("/game_insert", methods=['POST'])
 def game_insert():
+    """ Insert game datas to database """
+
     # If category entered is not blank, convert to ObjectId
     category = request.form['category']
     if (category != ""):
@@ -72,6 +76,8 @@ def game_insert():
 
 @app.route("/game_update", methods=['POST'])
 def game_update():
+    """ Update existing game datas from database """
+
     # Check if id entered is valid,
     # display 400 error page if not valid
     if not ObjectId.is_valid(request.form['id']):
@@ -106,6 +112,8 @@ def game_update():
 
 @app.route("/game_delete", methods=['POST'])
 def game_delete():
+    """ Delete game from database """
+
     # Check if id entered is valid,
     # display 400 error page if not valid
     if not ObjectId.is_valid(request.form['id']):
@@ -126,15 +134,15 @@ def game_delete():
 
 @app.route("/category_insert", methods=['POST'])
 def category_insert():
-    # Insert name to table
+    """ Insert category to database """
     x = mongo.db.categories.insert_one({"name": request.form['name']})
-
-    # Return id of newly inserted table
     return str(x.inserted_id)
 
 
 @app.route("/category_delete", methods=['POST'])
 def category_delete():
+    """ Delete category from database """
+
     # Check if id entered is valid,
     # display 400 error page if not valid
     if not ObjectId.is_valid(request.form['id']):
