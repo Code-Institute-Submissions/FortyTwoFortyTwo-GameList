@@ -75,7 +75,7 @@ input[readonly], select[disabled], textarea[readonly] {
 }
 
 #input-cost {
-	max-width: 6rem;
+	max-width: 10rem;
 }
 
 #input-rating {
