@@ -79,7 +79,7 @@ input[readonly], select[disabled], textarea[readonly] {
 }
 
 #input-rating {
-	max-width: 4rem;
+	padding: 0;
 }
 
 #input-category {

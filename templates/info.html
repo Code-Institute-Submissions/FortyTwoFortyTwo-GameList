@@ -40,7 +40,16 @@
 			
 			<p><input class="text-align-center" type="text" id="input-title" name="title" value="{{ game.title }}" required readonly></p>
 			<p><label for="input-cost">Cost: £</label><input type="number" id="input-cost" name="cost" value="{{ game.cost }}" min="0" required readonly></p>
-			<p><label for="input-rating">Rating: </label><input type="number" id="input-rating" name="rating" value="{{ game.rating }}" min="0" max="100" required readonly></p>
+			<p>
+				<label for="input-rating">Rating: </label>
+				<select id="input-rating" name="rating" disabled>
+					<option value="1" {% if game.rating == "1" %}selected{% endif %}>Very Bad</option>
+					<option value="2" {% if game.rating == "2" %}selected{% endif %}>Bad</option>
+					<option value="3" {% if game.rating == "3" %}selected{% endif %}>Okay</option>
+					<option value="4" {% if game.rating == "4" %}selected{% endif %}>Good</option>
+					<option value="5" {% if game.rating == "5" %}selected{% endif %}>Very Good</option>
+				</select>
+			</p>
 			
 			<p>
 				<label for="input-category">Category: </label>
