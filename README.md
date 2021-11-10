@@ -9,6 +9,7 @@ The website is designed to be simple and easy to use on any platform or scale.
 * [Features](#features)
 * [Designs](#designs)
 * [Technologies Used](#technologies-used)
+* [Database](#database)
 * [Testing](#testing)
 * [Known Bugs](#known-bugs)
 * [Deployment](#deployment)
@@ -65,6 +66,23 @@ Categories that can be filtered to only show games in a selected category
 * [GitHub](https://github.com) for the repository to store the files
 * [GitPod](https://gitpod.io) to test and edit the website
 * [Heroku](https://dashboard.heroku.com) to deploy the site
+
+## Database
+The database chosen for this is a non-relational database hosted on MongoDB.
+
+The application uses 2 database collections, 'categories' and 'games'.
+
+#### games
+- _id (Unique identifier as `ObjectId`)
+- cost (Price as pounds)
+- rating (Rating from `1` to `5` as `Very Bad` to `Very Good`)
+- title (Title)
+- desp (Infromation)
+- category (Category this game is with as `ObjectId` pointing to `categories._id`)
+
+#### categories
+- _id (Unique identifier as `ObjectId`)
+- name (Name)
 
 ## Testing
 | Test Label | Test Action | Expected Outcome | Test Outcome |
