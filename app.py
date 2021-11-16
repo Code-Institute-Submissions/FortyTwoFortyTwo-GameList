@@ -49,22 +49,22 @@ def info(id):
     return render_template("info.html", game=game, categories=categories)
 
 
-@app.route("/game_insert", methods=['POST'])
+@app.route("/game_insert", methods=["POST"])
 def game_insert():
     """ Insert game datas to database """
 
     # If category entered is not blank, convert to ObjectId
-    category = request.form['category']
+    category = request.form["category"]
     if (category != ""):
         category = ObjectId(category)
 
     # Create object of datas to send to database
     game_data = {
-        "title": request.form['title'],
-        "cost": request.form['cost'],
-        "rating": request.form['rating'],
+        "title": request.form["title"],
+        "cost": request.form["cost"],
+        "rating": request.form["rating"],
         "category": category,
-        "desp": request.form['desp']
+        "desp": request.form["desp"]
     }
 
     # Insert to database
@@ -74,54 +74,54 @@ def game_insert():
     return str(x.inserted_id)
 
 
-@app.route("/game_update", methods=['POST'])
+@app.route("/game_update", methods=["POST"])
 def game_update():
     """ Update existing game datas from database """
 
     # Check if id entered is valid,
     # display 400 error page if not valid
-    if not ObjectId.is_valid(request.form['id']):
+    if not ObjectId.is_valid(request.form["id"]):
         abort(400)
 
     # Find id in table to see if there is one,
     # display 400 error page if not found
-    id = ObjectId(request.form['id'])
+    id = ObjectId(request.form["id"])
     if not bool(mongo.db.games.find_one({"_id": id})):
         abort(400)
 
     # If category entered is not blank, convert to ObjectId
-    category = request.form['category']
+    category = request.form["category"]
     if (category != ""):
         category = ObjectId(category)
 
     # Create object of datas to update to database
     game_data = {
-        "title": request.form['title'],
-        "cost": request.form['cost'],
-        "rating": request.form['rating'],
+        "title": request.form["title"],
+        "cost": request.form["cost"],
+        "rating": request.form["rating"],
         "category": category,
-        "desp": request.form['desp']
+        "desp": request.form["desp"]
     }
 
     # Update to database by id
-    mongo.db.games.update_one({'_id': id}, {'$set': game_data})
+    mongo.db.games.update_one({"_id": id}, {"$set": game_data})
 
     # Return back id of updated table
-    return request.form['id']
+    return request.form["id"]
 
 
-@app.route("/game_delete", methods=['POST'])
+@app.route("/game_delete", methods=["POST"])
 def game_delete():
     """ Delete game from database """
 
     # Check if id entered is valid,
     # display 400 error page if not valid
-    if not ObjectId.is_valid(request.form['id']):
+    if not ObjectId.is_valid(request.form["id"]):
         abort(400)
 
     # Find id in table to see if there is one,
     # display 400 error page if not found
-    id = ObjectId(request.form['id'])
+    id = ObjectId(request.form["id"])
     if not bool(mongo.db.games.find_one({"_id": id})):
         abort(400)
 
@@ -129,28 +129,28 @@ def game_delete():
     mongo.db.games.delete_one({"_id": id})
 
     # Return back id of deleted data
-    return request.form['id']
+    return request.form["id"]
 
 
-@app.route("/category_insert", methods=['POST'])
+@app.route("/category_insert", methods=["POST"])
 def category_insert():
     """ Insert category to database """
-    x = mongo.db.categories.insert_one({"name": request.form['name']})
+    x = mongo.db.categories.insert_one({"name": request.form["name"]})
     return str(x.inserted_id)
 
 
-@app.route("/category_delete", methods=['POST'])
+@app.route("/category_delete", methods=["POST"])
 def category_delete():
     """ Delete category from database """
 
     # Check if id entered is valid,
     # display 400 error page if not valid
-    if not ObjectId.is_valid(request.form['id']):
+    if not ObjectId.is_valid(request.form["id"]):
         abort(400)
 
     # Find id in table to see if there is one,
     # display 400 error page if not found
-    id = ObjectId(request.form['id'])
+    id = ObjectId(request.form["id"])
     if not bool(mongo.db.categories.find_one({"_id": id})):
         abort(400)
 
@@ -159,14 +159,14 @@ def category_delete():
     for game in games:
         if game.get("category") == id:
             mongo.db.games.update_one(
-                {'category': id}, {'$set': {"category": ""}}
+                {"category": id}, {"$set": {"category": ""}}
             )
 
     # Delete data in table by id
     mongo.db.categories.delete_one({"_id": id})
 
     # Return back id of deleted data
-    return request.form['id']
+    return request.form["id"]
 
 
 if __name__ == "__main__":
