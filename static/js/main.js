@@ -18,12 +18,7 @@ $(document).on("click", ".game-create", function ()
 	}
 
 	//Set cost to fixed values
-	if (datacost == "")
-	{
-		datacost = 0.0;
-	}
-	
-	datacost = parseFloat(datacost).toFixed(2);
+	datacost = datacost ? parseFloat(datacost).toFixed(2) : "0.00";
 	
 	//Insert datas to database
 	$.post("/game_insert", {title: datatitle, cost: datacost, rating: datarating, category: datacategory, desp: datadesp}, function(data, status)
