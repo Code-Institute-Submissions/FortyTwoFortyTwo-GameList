@@ -1,7 +1,7 @@
 # GameList
 
 ## About
-I developed a website for Code Institute's Backend Development Milestone Project. The website's goal is to allow user to insert, edit and delete list of games.
+I developed a [website](https://fortytwo-gamelist.herokuapp.com) for Code Institute's Backend Development Milestone Project. The website's goal is to allow user to insert, edit and delete list of games.
 The website is designed to be simple and easy to use on any platform or scale.
 
 ## Index – Table of Contents
