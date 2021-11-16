@@ -17,7 +17,12 @@ $(document).on("click", ".game-create", function ()
 		return;
 	}
 
-	//Set cost and rating to fixed values
+	//Set cost to fixed values
+	if (datacost == "")
+	{
+		datacost = 0.0;
+	}
+	
 	datacost = parseFloat(datacost).toFixed(2);
 	
 	//Insert datas to database
