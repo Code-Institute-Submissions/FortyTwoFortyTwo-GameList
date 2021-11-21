@@ -70,7 +70,7 @@ input[readonly], select[disabled], textarea[readonly] {
 /* ---------------------------------- Inputs */
 
 #input-title {
-	width: 100%;
+	width: calc(100% - 5rem);
 	outline: none;
 }
 
