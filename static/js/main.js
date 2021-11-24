@@ -176,6 +176,9 @@ $(document).on("blur", "#categories-new", function ()
 	//Get value entered
 	let value = $("#categories-new")[0].value;
 
+	//Clear value
+	$("#categories-new").val("");
+
 	//If nothing entered, dont create new category
 	if (value == "")
 	{
