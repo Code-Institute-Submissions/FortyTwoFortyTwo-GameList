@@ -112,7 +112,7 @@ The application uses 2 database collections, 'categories' and 'games'.
 | Confirm category game | Clicking ok in delete confirmation | Category deleted | PASS |
 
 ## Known Bugs
-Cost and rating can be inserted as non-numbers
+There are currently no known bugs
 
 ## Deployment
 
