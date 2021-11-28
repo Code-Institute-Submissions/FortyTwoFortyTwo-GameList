@@ -60,8 +60,12 @@ Categories that can be filtered to only show games in a selected category
 * Python
 * [HTML Validator](https://validator.w3.org) for validity of HTML
 * [CSS Validator](https://jigsaw.w3.org/css-validator) for validity of CSS
-* [PEP8](http://pep8online.com) for validity of python
+* [PEP8 Validator](http://pep8online.com) for validity of python
 * [Bootstrap4](https://getbootstrap.com) for the grid layout, components and styling
+* [Google Fonts](https://fonts.google.com/specimen/Exo) for Exo fonts
+* [FontAwsome](https://fontawesome.com/) as icon provider
+* [Hover](https://ianlunn.github.io/Hover/) for styling effects on mouse hover
+* [JQuery](https://jquery.com/) for JavaScript library to simplify HTML DOM manipulation
 * [Git](https://git-scm.com) for version control
 * [GitHub](https://github.com) for the repository to store the files
 * [GitPod](https://gitpod.io) to test and edit the website
@@ -89,6 +93,7 @@ The application uses 2 database collections, 'categories' and 'games'.
 | --- | --- | --- | --- |
 | HTML Validator | Check for any warnings or errors at [HTML Validator](https://validator.w3.org/) | No warnings or errors reported | PASS |
 | CSS Validator | Check for any warnings or errors at [CSS Validator](https://jigsaw.w3.org/css-validator/) | No warnings or errors reported | PASS |
+| PEP8 Validator | Check for any warnings or errors at [PEP8 Validator](http://pep8online.com) | No warnings or errors reported | PASS |
 | Opening home browser | Opening the home website browser by google chrone, microsoft edge and phones | Home website can be opened | PASS |
 | Screen Size | Resizing all website screens for any sizes above 300 pixels | All websites is responsive when screen changes size to fit | PASS |
 | Select game | Clicking one of the game in home page | Opens info page on selected game | PASS |
